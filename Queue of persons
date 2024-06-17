@@ -1,0 +1,57 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+char q[50][20];
+int front = -1, rear = -1;
+
+void Qins(char person[20]);
+void Qdel();
+void display();
+void search(char person[20]);
+
+int main()
+{
+    int choice;
+    char person[20];
+
+    while (1)
+    {
+        printf("**********QUEUE OF PERSONS**********");
+        printf("\n1.ADD A PERSON\n2.DELETE A PERSON\n3.SEARCH A PERSON\n4.DISPLAY QUEUE\n5.EXIT\n");
+        printf("Enter Your Choice: ");
+        scanf("%d", &choice);
+
+        switch (choice)
+        {
+        case 1:
+            printf("Enter the name of the person to insert in the queue: ");
+            scanf("%s", person);
+            Qins(person);
+            break;
+
+        case 2:
+            Qdel();
+            break;
+
+        case 3:
+            printf("Enter the name of the person to search: ");
+            scanf("%s", person);
+            search(person);
+            break;
+            
+
+        case 4:
+            display();
+            break;
+
+        case 5:
+            exit(0);
+
+        default:
+            printf("Enter Valid Choice");
+            break;
+        }
+    }
+    return 0;
+}
