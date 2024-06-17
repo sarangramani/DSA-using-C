@@ -55,3 +55,77 @@ int main()
     }
     return 0;
 }
+
+void Qins(char person[20])
+{
+    if (rear >= 49)
+    {
+        printf("QUEUE OVERFLOW\n");
+        return;
+    }
+
+    rear++;
+    strcpy(q[rear], person);
+
+    if (front == -1)
+    {
+        front = 0;
+    }
+    printf("Person %s added to the queue\n",person);
+}
+
+void Qdel()
+{
+    char person[20];
+    if (front == -1)
+    {
+        printf("\nQUEUE UNDERFLOW\n");
+        return;
+    }
+
+    strcpy(person, q[front]);
+    if (front == rear)
+    {
+        front = rear = -1;
+    }
+    else
+    {
+        front++;
+    }
+    printf("\nDeleted person is: %s\n", person);
+}
+
+void display()
+{
+    if (front == -1)
+    {
+        printf("\nQueue is empty\n");
+        return;
+    }
+
+    printf("\n Queue: ");
+    for (int i = front; i <= rear; i++)
+    {
+        printf("%s ", q[i]);
+    }
+    printf("\n");
+}
+
+void search(char person[20])
+{
+    int found = 0;
+    for (int i = front; i <= rear; i++)
+    {
+        if (strcmp(q[i], person) == 0)
+        {
+            found = 1;
+            printf("\nPerson '%s' found in the queue\n", person);
+            break;
+        }
+    }
+
+    if (found == 0)
+    {
+        printf("\nPerson '%s' not found in the queue\n", person);
+    }
+}
